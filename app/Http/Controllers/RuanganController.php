@@ -65,6 +65,7 @@ class RuanganController extends Controller {
 	 */
 	public function edit($id) {
 		//
+		return Ruangan::find($id);
 	}
 
 	/**
@@ -76,6 +77,15 @@ class RuanganController extends Controller {
 	 */
 	public function update(Request $request, $id) {
 		//
+		$request->validate([
+			'namaruangan' => 'required',
+		]);
+		$ruangan = Ruangan::find($id)->update($request->all());
+		if ($ruangan) {
+			return response(200);
+		} else {
+			return response(500);
+		}
 	}
 
 	/**

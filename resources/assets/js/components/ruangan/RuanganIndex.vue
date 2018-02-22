@@ -18,12 +18,16 @@
                             <tr>
                               <th scope="col">No</th>
                               <th scope="col">Nama</th>
+                              <th scope="col">Option</th>
                             </tr>
                           </thead>
                           <tbody v-if="ruangan.length">
                             <tr v-for="items,index in ruangan">
                               <th>{{ items.id }}</th>
                               <td>{{ items.namaruangan }}</td>
+                              <td>
+                                <router-link :to="{name:'EditRuangan' ,params:{id: items.id}}" class="btn btn-xs btn-primary">Edit</router-link>
+                              </td>
                             </tr>
                           </tbody>
                           <tbody v-else>
