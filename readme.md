@@ -10,6 +10,7 @@ Contoh CRUD Laravel 5.6 Vue JS
 - Hapus Data
 - Tambah Data
 - Sweetalert
+- Pagination
 
 ## Cara Install
 
