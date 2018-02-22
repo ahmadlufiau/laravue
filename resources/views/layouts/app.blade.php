@@ -27,16 +27,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                          <li class="nav-item active">
-                            <a class="nav-link" href="#"><router-link :to="{name: 'IndexDashboard'}" >Home</router-link></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#"><router-link :to="{name: 'IndexRuangan'}" >Ruangan</router-link></a>
-                          </li>
-                        </ul>
-                      </div>
+                        @if(Auth::check())
+                          <li><router-link :to="{name: 'IndexDashboard'}" class="nav-link" >Home</router-link></li>
+                          <li><router-link :to="{name: 'IndexRuangan'}" class="nav-link" >Ruangan</router-link></li>
+                        @endif
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
