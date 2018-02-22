@@ -37,6 +37,9 @@
                             </tr>
                           </tbody>
                         </table>
+                        <vue-pagination :data="ruanganData" v-on:pagination-change-page="getResults" :limit="4">
+                        </vue-pagination>
+                        <vue-simple-spinner v-if="loading" message="Loading..."></vue-simple-spinner>
                     </div>
                 </div>
             </div>

@@ -56168,6 +56168,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -56268,114 +56271,128 @@ var render = function() {
         _c("div", { staticClass: "card card-default" }, [
           _c("div", { staticClass: "card-header" }, [_vm._v("Data Ruangan")]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              { staticClass: "form-group" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-md btn-primary",
-                    attrs: { to: { name: "CreateRuangan" } }
-                  },
-                  [
-                    _vm._v(
-                      " \r\n                            Tambah Ruangan\r\n                            "
-                    )
-                  ]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.pencarian,
-                    expression: "pencarian"
-                  }
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-md btn-primary",
+                      attrs: { to: { name: "CreateRuangan" } }
+                    },
+                    [
+                      _vm._v(
+                        " \r\n                            Tambah Ruangan\r\n                            "
+                      )
+                    ]
+                  )
                 ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Pencarian ..." },
-                domProps: { value: _vm.pencarian },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.pencarian = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table" }, [
-              _vm._m(0),
+                1
+              ),
               _vm._v(" "),
-              _vm.ruangan.length
-                ? _c(
-                    "tbody",
-                    _vm._l(_vm.ruangan, function(items, index) {
-                      return _c("tr", [
-                        _c("th", [_vm._v(_vm._s(items.id))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(items.namaruangan))]),
-                        _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.pencarian,
+                      expression: "pencarian"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Pencarian ..." },
+                  domProps: { value: _vm.pencarian },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.pencarian = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("table", { staticClass: "table" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm.ruangan.length
+                  ? _c(
+                      "tbody",
+                      _vm._l(_vm.ruangan, function(items, index) {
+                        return _c("tr", [
+                          _c("th", [_vm._v(_vm._s(items.id))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(items.namaruangan))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-xs btn-primary",
+                                  attrs: {
+                                    to: {
+                                      name: "EditRuangan",
+                                      params: { id: items.id }
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-xs btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.konfirmasiHapus(
+                                        items.id,
+                                        index,
+                                        items.namaruangan
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Hapus")]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      })
+                    )
+                  : _c("tbody", [
+                      _c("tr", [
                         _c(
                           "td",
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-xs btn-primary",
-                                attrs: {
-                                  to: {
-                                    name: "EditRuangan",
-                                    params: { id: items.id }
-                                  }
-                                }
-                              },
-                              [_vm._v("Edit")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-xs btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    _vm.konfirmasiHapus(
-                                      items.id,
-                                      index,
-                                      items.namaruangan
-                                    )
-                                  }
-                                }
-                              },
-                              [_vm._v("Hapus")]
-                            )
-                          ],
+                          { attrs: { colspan: "2" } },
+                          [_c("center", [_vm._v("Tidak Ada Data")])],
                           1
                         )
                       ])
-                    })
-                  )
-                : _c("tbody", [
-                    _c("tr", [
-                      _c(
-                        "td",
-                        { attrs: { colspan: "2" } },
-                        [_c("center", [_vm._v("Tidak Ada Data")])],
-                        1
-                      )
                     ])
-                  ])
-            ])
-          ])
+              ]),
+              _vm._v(" "),
+              _c("vue-pagination", {
+                attrs: { data: _vm.ruanganData, limit: 4 },
+                on: { "pagination-change-page": _vm.getResults }
+              }),
+              _vm._v(" "),
+              _vm.loading
+                ? _c("vue-simple-spinner", { attrs: { message: "Loading..." } })
+                : _vm._e()
+            ],
+            1
+          )
         ])
       ])
     ])
