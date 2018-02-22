@@ -55960,9 +55960,12 @@ exports.version = version;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_dashboard_DashboardIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_dashboard_DashboardIndex_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ruangan_RuanganIndex_vue__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ruangan_RuanganIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_ruangan_RuanganIndex_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ExampleComponent_vue__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ExampleComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_ExampleComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ruangan_RuanganCreate_vue__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ruangan_RuanganCreate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_ruangan_RuanganCreate_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ExampleComponent_vue__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ExampleComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_ExampleComponent_vue__);
 //DASHBOARD
+
 
 
 
@@ -55971,7 +55974,7 @@ var routes = [{
    path: '/',
    component: __WEBPACK_IMPORTED_MODULE_0__components_dashboard_DashboardIndex_vue___default.a,
    name: 'IndexDashboard'
-}, { path: '/ruangan', component: __WEBPACK_IMPORTED_MODULE_1__components_ruangan_RuanganIndex_vue___default.a, name: 'IndexRuangan' }];
+}, { path: '/ruangan', component: __WEBPACK_IMPORTED_MODULE_1__components_ruangan_RuanganIndex_vue___default.a, name: 'IndexRuangan' }, { path: '/ruangan/create', component: __WEBPACK_IMPORTED_MODULE_2__components_ruangan_RuanganCreate_vue___default.a, name: 'CreateRuangan' }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
 
@@ -56151,6 +56154,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -56219,6 +56227,26 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Data Ruangan")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-md btn-primary",
+                    attrs: { to: { name: "CreateRuangan" } }
+                  },
+                  [
+                    _vm._v(
+                      " \r\n                            Tambah Ruangan\r\n                            "
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("input", {
                 directives: [
@@ -67785,6 +67813,211 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 234 */,
+/* 235 */,
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(19)
+/* script */
+var __vue_script__ = __webpack_require__(237)
+/* template */
+var __vue_template__ = __webpack_require__(238)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ruangan\\RuanganCreate.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-be46c8be", Component.options)
+  } else {
+    hotAPI.reload("data-v-be46c8be", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 237 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            ruangan: {
+                namaruangan: ''
+            },
+            url: window.location.origin + window.location.pathname.replace("home", "ruangan"),
+            errors: [],
+            message: ''
+        };
+    },
+    mounted: function mounted() {
+        var app = this;
+    },
+
+    methods: {
+        alert: function alert(pesan) {
+            this.$swal({
+                title: "Data Berhasil Ditambah",
+                text: pesan,
+                icon: "success"
+            });
+        },
+        saveForm: function saveForm() {
+            var _this = this;
+
+            var newRuangan = this.ruangan;
+            axios.post(this.url, newRuangan).then(function (resp) {
+                _this.alert('Berhasil Menambah ' + _this.ruangan.namaruangan);
+                _this.$router.replace('/ruangan/');
+            }).catch(function (resp) {
+                if (resp.response.status == 500) alert('Something Goes Wrong');
+                _this.errors = resp.response.data.errors;
+                console.log(resp);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Tambah Ruangan")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.saveForm()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Nama Ruangan")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ruangan.namaruangan,
+                        expression: "ruangan.namaruangan"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Nama Ruangan",
+                      required: ""
+                    },
+                    domProps: { value: _vm.ruangan.namaruangan },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.ruangan,
+                          "namaruangan",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.namaruangan
+                    ? _c("span", { staticClass: "label label-danger" }, [
+                        _vm._v(" " + _vm._s(_vm.errors.nama[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Simpan")]
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-be46c8be", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -6,6 +6,11 @@
                     <div class="card-header">Data Ruangan</div>
                     <div class="card-body">
                         <div class="form-group">
+                            <router-link :to="{name: 'CreateRuangan'}" class="btn btn-md btn-primary"> 
+                            Tambah Ruangan
+                            </router-link>
+                        </div>
+                        <div class="form-group">
                             <input type="text" class="form-control" placeholder="Pencarian ..." v-model="pencarian">
                         </div>
                         <table class="table">

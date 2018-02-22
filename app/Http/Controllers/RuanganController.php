@@ -41,6 +41,10 @@ class RuanganController extends Controller {
 	 */
 	public function store(Request $request) {
 		//
+		$request->validate([
+			'namaruangan' => 'required',
+		]);
+		$ruangan = Ruangan::create($request->all());
 	}
 
 	/**
