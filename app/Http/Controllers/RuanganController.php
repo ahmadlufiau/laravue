@@ -96,5 +96,11 @@ class RuanganController extends Controller {
 	 */
 	public function destroy($id) {
 		//
+		$ruangan = Ruangan::destroy($id);
+		if ($ruangan) {
+			return response(200);
+		} else {
+			return response(500);
+		}
 	}
 }

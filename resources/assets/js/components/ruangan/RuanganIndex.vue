@@ -27,6 +27,7 @@
                               <td>{{ items.namaruangan }}</td>
                               <td>
                                 <router-link :to="{name:'EditRuangan' ,params:{id: items.id}}" class="btn btn-xs btn-primary">Edit</router-link>
+                                <button class="btn btn-xs btn-danger" v-on:click="konfirmasiHapus(items.id,index,items.namaruangan)">Hapus</button>
                               </td>
                             </tr>
                           </tbody>
@@ -93,6 +94,38 @@ export default {
         .catch(function(resp){
             console.log(resp);
             app.loading = false;
+        })
+      },
+      deleteEntry(id,index,namaRuangan){
+          axios.delete(this.url + '/' + id)
+          .then((resp) => {
+            this.getResults();
+            this.alert("Data Berhasil Menghapus","Berhasil Menghapus Ruangan " + namaRuangan);
+          })
+          .catch((resp) =>{
+            alert("Something Goes Wrong")
+            console.log(resp);
+          })
+      },
+      konfirmasiHapus(id,index,namaRuangan){
+        this.$swal({
+          title: "Yakin Ingin Menghapus Ruangan " + namaRuangan + "?",
+          text: "Data yang di hapus tidak akan bisa di kembalikan lagi",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            this.deleteEntry(id,index,namaRuangan);
+          }
+        })  
+      },
+      alert(title,pesan){
+        this.$swal({
+          title: title,
+          text: pesan,
+          icon: "success"
         });
       }
     }
