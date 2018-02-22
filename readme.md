@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/ahmadlufiau/laravue/master/public/ss.png"></p>
+
 ## CRUD Laravel 5.6 Vue JS
 
 Contoh CRUD Laravel 5.6 Vue JS 
